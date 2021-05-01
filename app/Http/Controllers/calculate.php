@@ -25,7 +25,7 @@ class calculate extends Controller
         }
         else{
             return view('calculate')->with('action','there is mistake');
-        }
+        }//
 
 
     }
