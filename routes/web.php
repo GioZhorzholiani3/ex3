@@ -15,7 +15,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     //return 4+4;
-    return view('welcome');
+    //return view('welcome');
+    $posts = \App\Models\Post::all();
+    return view('test.test',compact('posts'));
+});
+Route::get('/test2', function () {
+
+    return view('test.test2');
 });
 /*Route::get('/test',function (){
     return view('test');
@@ -28,6 +34,8 @@ Route::get('/posts',function (){
 });
 Route::get('/post',[\App\Http\Controllers\PostController::class,'index']);
 
+Route::get('/post/list',[\App\Http\Controllers\PostController::class,'list'])->name('post.list');
+
 Route::get('/post/create',[\App\Http\Controllers\PostController::class,'create']);
 
 Route::post('/post/store',[\App\Http\Controllers\PostController::class,'store'])->name('post.store');
@@ -36,7 +44,7 @@ Route::get('/posts/{id}/edit',[\App\Http\Controllers\PostController::class,'edit
 
 Route::put('/posts/{id}/update',[\App\Http\Controllers\PostController::class,'update'])->name('posts.update');
 
-Route::delete('/posts/{id}/delete',[\App\Http\Controllers\PostController::class,'delete'])->name('posts.delete');
+Route::get('/posts/{id}/delete',[\App\Http\Controllers\PostController::class,'delete'])->name('posts.delete');
 
 Route::get('/post/{id}',[\App\Http\Controllers\PostController::class,'show'])->name('posts.show');
 

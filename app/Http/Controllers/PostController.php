@@ -17,6 +17,16 @@ class PostController extends Controller
         return view('posts.index',compact('posts'));
 
     }
+
+    public function list(){
+
+        $posts = Post::paginate(10);
+
+        return view('posts.list',compact('posts'));
+
+    }
+
+
     public function show($id){
         $post =Post::findOrFail($id);
         return view('posts.show',compact('post'));
